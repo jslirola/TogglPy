@@ -18,7 +18,7 @@ Next on the list:
 ```
 from TogglPy import Toggl
 
-# create a Toggl object and set our API key 
+# create a Toggl object and set our API key
 toggl = Toggl()
 toggl.setAPIKey("mytogglapikey")
 
@@ -43,7 +43,7 @@ response = toggl.request("https://www.toggl.com/api/v8/some/endpoint", parameter
 ```
 from TogglPy import Toggl
 
-# create a Toggl object and set our API key 
+# create a Toggl object and set our API key
 toggl = Toggl()
 toggl.setAPIKey("mytogglapikey")
 
@@ -65,7 +65,7 @@ This will print some raw data that will give you all the info you need to identi
 ```
 from TogglPy import Toggl
 
-# create a Toggl object and set our API key 
+# create a Toggl object and set our API key
 toggl = Toggl()
 toggl.setAPIKey("mytogglapikey")
 
@@ -110,4 +110,17 @@ toggl.setAPIKey("mytogglapikey")
 
 currentTimer = currentRunningTimeEntry()
 stopTimeEntry(currentTimer['data']['id'])
+```
+
+### Finding Projects
+
+```
+toggl = TogglPy.Toggl()
+toggl.setAPIKey("mytogglapikey")
+
+projects = toggl.getProjects()
+lPro = []
+
+for p in projects: # List <id> <name_of_project>
+	print p['id'],p['name']
 ```
