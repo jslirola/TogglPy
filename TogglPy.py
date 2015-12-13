@@ -16,6 +16,7 @@ import json
 class Endpoints():
     WORKSPACES = "https://www.toggl.com/api/v8/workspaces"
     CLIENTS = "https://www.toggl.com/api/v8/clients"
+    ME = "https://www.toggl.com/api/v8/me"
     REPORT_WEEKLY = "https://toggl.com/reports/api/v2/weekly"
     REPORT_DETAILED = "https://toggl.com/reports/api/v2/details"
     REPORT_SUMMARY = "https://toggl.com/reports/api/v2/summary"
@@ -142,6 +143,18 @@ class Toggl():
                     return workspace # if we find it return it
             return None # if we get to here and haven't found it return None
     
+    #-----------------------------------
+    # Methods for getting project data
+    #-----------------------------------    
+    def getPersonalInfo(self):
+        '''return all personal data for a user'''
+        data = { "with_related_data": "true" }
+        return self.request(Endpoints.ME, parameters=data)
+
+    def getProjects(self):
+        projects = self.getPersonalInfo()
+        return projects['data']['projects']
+
     #--------------------------------
     # Methods for getting client data
     #--------------------------------
